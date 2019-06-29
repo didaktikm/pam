@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 DATE=$(date +%y%m%d)
 TODAY=$(curl https://isdayoff.ru/"$DATE"?ru=CC)
-GROUP=$(groups $PAM_USER)
+GROUP=$(groups $PAM_USER | awk '{print $2}')
 
 if [[ $GROUP = "admin" ]]; then    
     exit 0

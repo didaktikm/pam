@@ -37,6 +37,8 @@ Vagrant.configure("2") do |config|
         groupadd admin
         useradd -G admin didaktik
         echo 0000 | passwd didaktik --stdin
+        useradd speccy
+        echo 0000 | passwd speccy --stdin
         #curl -o /root/.vimrc https://raw.githubusercontent.com/didaktikm/vimconf/master/.vimrc
         sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
         systemctl restart sshd
