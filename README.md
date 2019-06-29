@@ -12,3 +12,9 @@
 
 login;tty* & !ttyp*;!root;Wd0000-2400
 sshd;tty* & !ttyp*;!root;Wd0000-2400
+
+включаем модуль pam_time.so
+
+sudo sed -i '5i\account required pam_time.so' /etc/pam.d/login
+sudo sed -i '4i\account required pam_time.so' /etc/pam.d/sshd 
+
