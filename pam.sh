@@ -3,10 +3,12 @@ DATE=$(date +%y%m%d)
 TODAY=$(curl https://isdayoff.ru/"$DATE"?ru=CC)
 GROUP=$(groups $PAM_USER)
 
-if [[ $TODAY -eq 0 ]]; then
-  if [[ $GROUP = "admin" ]]; then    
+if [[ $GROUP = "admin" ]]; then    
     exit 0
-  else
+fi
+
+if [[ $TODAY -eq 1 ]]; then  
     exit 1
-  fi
+  else
+    exit 0
 fi
