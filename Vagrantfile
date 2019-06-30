@@ -30,7 +30,6 @@ Vagrant.configure("2") do |config|
         yum install -y epel-release
         yum install -y vim
         yum install -y ShellCheck
-        yum install -y pam_script ###
         curl -o /etc/pam-script.d/pam.sh https://raw.githubusercontent.com/didaktikm/pam/master/pam.sh
         sed -i '/-auth/a account     required       pam_exec.so    /etc/pam-script.d/pam.sh' /etc/pam.d/sshd
         chmod +x /etc/pam-script.d/pam.sh
