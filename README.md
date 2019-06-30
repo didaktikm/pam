@@ -12,11 +12,13 @@
 /etc/security/time.conf
 
 login;tty* & !ttyp*;!admin;Wd0000-2400
+
 sshd;tty* & !ttyp*;!admin;Wd0000-2400
 
 И добавить модуль проверки времени 
 
 sudo sed -i '5i\account required pam_time.so' /etc/pam.d/login
+
 sudo sed -i '4i\account required pam_time.so' /etc/pam.d/sshd 
 
 2. Запретить вход в праздники.
