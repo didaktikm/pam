@@ -32,7 +32,7 @@ Vagrant.configure("2") do |config|
         yum install -y ShellCheck
         yum install -y pam_script ###
         curl -o /etc/pam-script.d/pam.sh https://raw.githubusercontent.com/didaktikm/pam/master/pam.sh
-        sed -i '/6/a auth     required       pam_exec.so    /etc/pam-script.d/pam.sh' /etc/pam.d/sshd
+        sed -i '/-auth/a account     required       pam_exec.so    /etc/pam-script.d/pam.sh' /etc/pam.d/sshd
         chmod +x /etc/pam-script.d/pam.sh
         groupadd admin
         useradd -G admin didaktik
