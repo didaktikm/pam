@@ -1,14 +1,12 @@
 #!/usr/bin/env bash
-DATE=$(date +%y%m%d)
-TODAY=$(curl https://isdayoff.ru/"$DATE"?ru=CC)
-GROUP=$(groups $PAM_USER | awk '{print $2}')
+#DATE=$(date +%y%m%d)
+TODAY=$(curl https://isdayoff.ru/$(date +%Y%m%d)?ru=CC)
+GROUP=$(groups $PAM_USER | grep -c admin)
 
-if [[ $GROUP = "admin" ]]; then    
-    exit 0
-fi
-
-if [[ $TODAY -eq 1 ]]; then  
-    exit 1
+if [[ $GROUP -eq 1 ]]; then    
+  if [[ $TODAY -eq 0 ]]; then 
+      exit 1
   else
-    exit 0
-fi
+      exit 0
+  fi
+ fi
