@@ -30,10 +30,11 @@ Vagrant.configure("2") do |config|
         yum install -y epel-release
         yum install -y vim
         yum install -y ShellCheck
-        curl -o /etc/pam-script.d/pam.sh https://raw.githubusercontent.com/didaktikm/pam/master/pam.sh
-        sed -i '/-auth/a account     required       pam_exec.so    /etc/pam-script.d/pam.sh' /etc/pam.d/sshd
-        chmod +x /etc/pam-script.d/pam.sh
+        curl -o /etc/pam.sh https://raw.githubusercontent.com/didaktikm/pam/master/pam.sh
+        sed -i "7i account     required       pam_exec.so    /etc/pam.sh" /etc/pam.d/sshd
+        chmod +x /etc/pam.sh
         groupadd admin
+        usermod -G admin vagrant
         useradd -G admin didaktik
         echo 0000 | passwd didaktik --stdin
         useradd speccy
