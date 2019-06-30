@@ -3,10 +3,8 @@
 TODAY=$(curl https://isdayoff.ru/$(date +%Y%m%d)?ru=CC)
 GROUP=$(groups $PAM_USER | grep -c admin)
 
-if [[ $GROUP -eq 1 ]]; then    
-  if [[ $TODAY -eq 0 ]]; then 
-      exit 1
-  else
+if [[ $GROUP -eq 1 ]] && [[ $TODAY -eq 1 ]]; then    
       exit 0
-  fi
- fi
+  else
+      exit 1
+fi
