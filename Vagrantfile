@@ -4,7 +4,7 @@
 MACHINES = {
   :otuslinux => {
         :box_name => "centos/7",
-        :ip_addr => '192.168.11.150',
+        :ip_addr => '172.20.10.50',
 		},
 }
 
@@ -32,7 +32,7 @@ Vagrant.configure("2") do |config|
         yum install -y ShellCheck
         yum install -y pam_script ###
         curl -o /etc/pam-script.d/pam.sh https://raw.githubusercontent.com/didaktikm/pam/master/pam.sh
-        sed -i '/1/a auth     required       pam_script.so    dir=/etc/pam-script.d/' /etc/pam.d/sshd
+        sed -i '/6/a auth     required       pam_exec.so    /etc/pam-script.d/pam.sh' /etc/pam.d/sshd
         chmod +x /etc/pam-script.d/pam.sh
         groupadd admin
         useradd -G admin didaktik
