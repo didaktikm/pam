@@ -31,6 +31,7 @@ Vagrant.configure("2") do |config|
         yum install -y vim
         yum install -y ShellCheck
         curl -o /etc/pam.sh https://raw.githubusercontent.com/didaktikm/pam/master/pam.sh # Загружаем скрипт проверки
+        curl -o /etc/holidays https://raw.githubusercontent.com/didaktikm/pam/master/holidays # файл с праздниками
         sed -i "7i account     required       pam_exec.so    /etc/pam.sh" /etc/pam.d/sshd # Добавляем необходимость проверки условия в скрипте
         chmod +x /etc/pam.sh # Делаем скрипт исполняемым
         groupadd admin # Добавляем группу
