@@ -33,6 +33,6 @@ sed -i "7i account     required       pam_exec.so    /etc/pam.sh" /etc/pam.d/ssh
 
 Теперь в выходные и праздники будет пускать только группу admin
 
-Подробные комментарии приведеы в скрипте и в (blob/master/Vagrantfile)
+Подробные комментарии приведеы в скрипте и в (didaktikm/pam/blob/master/Vagrantfile)
 
 
